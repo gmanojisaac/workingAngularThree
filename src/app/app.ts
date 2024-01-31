@@ -45,10 +45,15 @@ export class Scene {
     templateUrl: './app.html',
     imports: [NgtCanvas, RouterOutlet, GoogleMapsModule],
 })
-export class App {
+export class App implements OnInit {
     readonly scene = Scene;
     constructor() {}
-    ngOnInit(): void {}
+    ngOnInit(): void {
+        this.initMap();
+    }
+    initMap (){
+
+    }
     display: any;
     center: google.maps.LatLngLiteral = {
         lat: 24,
