@@ -5,12 +5,12 @@
     <ngt-vector2 *args="[1024, 1024]" attach="shadow.mapSize" />
 </ngt-point-light>
 
-<ngt-mesh [receiveShadow]="true" [rotation]="[-Math.PI / 2, 0, 0]">
+<!--ngt-mesh [receiveShadow]="true" [rotation]="[-Math.PI / 2, 0, 0]">
     <ngt-plane-geometry *args="[100, 100]" />
     <ngt-shadow-material [transparent]="true" />
-</ngt-mesh>
+</ngt-mesh-->
 
 <ngt-primitive *args="model$ | ngtPush" [scale]="0.01" [position]="[0, 0.41, 0]" [rotation]="[0, -Math.PI / 2, 0]" />
 
-<ngts-environment preset="night" />
-<ngts-orbit-controls [autoRotate]="true" [autoRotateSpeed]="0.5" />
+<!--ngts-environment preset="night" />
+<ngts-orbit-controls [autoRotate]="true" [autoRotateSpeed]="0.5" /-->

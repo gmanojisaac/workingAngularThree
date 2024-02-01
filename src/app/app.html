@@ -1,6 +1,6 @@
-<!--ngt-canvas [sceneGraph]="scene" [camera]="{ position: [-5, 5, 5] }" [shadows]="true" /-->
-<google-map height="400px"
-            width="750px"
+<!--ngt-canvas style="height: 40%" [sceneGraph]="myscene" [camera]="{ position: [-5, 5, 5] }" [shadows]="true" />--
+<!--google-map height="400px"
+            width="100%"
             [center]="center"
             [zoom]="zoom"
             (mapClick)="moveMap($event)"
@@ -8,4 +8,18 @@
 </google-map>
 
 <div>Latitude: {{display?.lat}}</div>
-<div>Longitude: {{display?.lng}}</div>
+<div>Longitude: {{display?.lng}}</div-->
+
+<!-- google-map-demo.component.html >
+<google-map height="400px"
+width="100%">
+<map-marker *ngFor = "let marker of markers"
+[position]="marker.position"
+[label]="marker.label"
+[title]="marker.title"
+[options]="marker.options"
+>
+</map-marker>
+</google-map-->
+
+<div  style="height: 100%" id="map"></div>
