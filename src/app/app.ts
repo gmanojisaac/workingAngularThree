@@ -52,34 +52,10 @@ export class App implements OnInit {
     private readonly gltf$ = injectNgtsGLTFLoader("https://raw.githubusercontent.com/googlemaps/js-samples/main/assets/pin.gltf");
     modelSubscription = this.gltf$.pipe(
         map((gltf) => {
-            const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
 
-            gltf.scene.add(ambientLight);
 
-  const directionalLight = new THREE.DirectionalLight(0xffffff, 0.25);
 
-  directionalLight.position.set(0, 10, 50);
-  gltf.scene.add(directionalLight);
 
-  gltf.scene.scale.set(10, 10, 10);
-  gltf.scene.rotation.x = Math.PI / 2;
-  let { tilt, heading, zoom } = this.mapOptions;
-
-  const animate = () => {
-    if (tilt < 67.5) {
-      tilt += 0.5;
-    } else if (heading <= 360) {
-      heading += 0.2;
-      zoom -= 0.0005;
-    } else {
-      // exit animation loop
-      return;
-    }
-
-    this.mymap.moveCamera({ tilt, heading, zoom });
-
-    requestAnimationFrame(animate);
-};
             return [gltf.scene];
         })
     );
@@ -111,7 +87,19 @@ export class App implements OnInit {
         this.mymap = new google.maps.Map(mapDiv, this.mapOptions);
         this.modelSubscription.subscribe((myglf: any) => {
 
-                this.scene.add(myglf);
+                this.scene.add(myglf[0]);
+                console.log(myglf[0]);
+                const ambientLight = new THREE.AmbientLight(0xffffff, 0.75);
+
+                this.scene.add(ambientLight);
+    
+      const directionalLight = new THREE.DirectionalLight(0xffffff, 0.25);
+    
+      directionalLight.position.set(0, 10, 50);
+      this.scene.add(directionalLight);
+    
+      this.scene.scale.set(100, 100, 100);
+      this.scene.rotation.x = Math.PI / 2;
                 let { tilt, heading, zoom } = this.mapOptions;
 
     const animate = () => {
